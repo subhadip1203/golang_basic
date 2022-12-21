@@ -24,4 +24,7 @@ func main() {
 	print(c)
 	c = append(c, 10)
 	print(c)
+	c = append(c, 11, 12, 13, 14, 15)
+	print(c)
+	print("length", len(c))
 }
