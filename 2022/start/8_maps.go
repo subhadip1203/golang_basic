@@ -8,6 +8,8 @@ var print = fmt.Println
 
 func main() {
 	//  map[key_type] value_type
+	// maps may have dynamic keys
+	// like hashmap
 	var sampleMap = map[string]int{
 		"one": 1,
 		"two": 2,
