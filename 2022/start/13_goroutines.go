@@ -12,6 +12,7 @@ func printHi() {
 }
 
 func main() {
+	// the key word go used for go routines
 	go printHi()
 
 	print("Hi 2")
