@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -10,7 +11,7 @@ import (
 
 type Movie struct {
 	ID       string    ` json: "id" `
-	Isbn     string    ` json: "isbn" `
+	ISBN     string    ` json: "isbn" `
 	Title    string    `json: "title" `
 	Director *Director `json: "director" `
 }
@@ -23,6 +24,11 @@ type Director struct {
 var movies []Movie
 
 func main() {
+
+	// creating Fake movies
+	movies = append(movies, Movie{ID: "1", ISBN: "abcd1", Title: "Title 1", Director: &Director{FirstName: "Director 1 first", LastName: "Director 1 last"}})
+	movies = append(movies, Movie{ID: "2", ISBN: "abcd2", Title: "Title 2", Director: &Director{FirstName: "Director 2 first", LastName: "Director 2 last"}})
+
 	r := mux.NewRouter()
 	r.HandleFunc("/", ping).Methods("GET")
 	r.HandleFunc("/movies", getAllMovies).Methods("GET")
@@ -42,8 +48,24 @@ func ping(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "{status:1}")
 }
 
-func getAllMovies(w http.ResponseWriter, r *http.Request) {}
+// get all the movies details
+func getAllMovies(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-type", "application/json")
+	json.NewEncoder(w).Encode(movies)
+}
 func getMovie(w http.ResponseWriter, r *http.Request)     {}
 func createMovies(w http.ResponseWriter, r *http.Request) {}
 func updateMovies(w http.ResponseWriter, r *http.Request) {}
-func deleteMovies(w http.ResponseWriter, r *http.Request) {}
+
+// Delete a movie
+func deleteMovies(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-type", "application/json")
+	params := mux.Vars(r)
+	for index, item := range movies {
+		if item.ID == params["id"] {
+			movies = append(movies[:index], movies[index+1:]...)
+			break
+		}
+	}
+	json.NewEncoder(w).Encode(movies)
+}
