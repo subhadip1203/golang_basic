@@ -1,0 +1,42 @@
+### Ping Server
+GET http://localhost:8000
+
+
+### All movie list
+GET http://localhost:8000/movies
+
+### get single movie
+GET http://localhost:8000/movies/1
+
+
+
+### create movie
+POST http://localhost:8000/movies
+
+{
+  "ID": "3",
+  "ISBN": "abcd3",
+  "Title": "Title 3",
+  "Director": {
+    "FirstName": "Director 3 first",
+    "LastName": "Director 3 last"
+  }
+}
+
+### Update movie
+PUT http://localhost:8000/movies
+
+{
+  "ID": "3",
+  "ISBN": "abcd33",
+  "Title": "Title 33",
+  "Director": {
+    "FirstName": "Director 33 first",
+    "LastName": "Director 33 last"
+  }
+}
+
+
+### get single movie
+DELETE  http://localhost:8000/movies/1
+  
