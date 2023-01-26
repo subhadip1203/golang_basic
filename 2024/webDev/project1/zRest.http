@@ -1,0 +1,20 @@
+
+### ping server
+GET http://localhost:8000
+
+
+
+###  ----- Book Routes
+
+
+### get all books
+GET http://localhost:8000/book
+
+### get a perticular book
+GET http://localhost:8000/book/1
+
+
+### Create book
+POST http://localhost:8000/book
+
+
