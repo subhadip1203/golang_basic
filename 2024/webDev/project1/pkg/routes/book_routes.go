@@ -2,12 +2,13 @@ package route
 
 import (
 	"github.com/gorilla/mux"
+	controller "github.com/subhadip1203/golang_basic/2024/webDev/project1/pkg/controllers"
 )
 
-var bookStaoreRoutes = func(router *mux.Router) {
-	router.HandleFunc("/book", controllers.getAllBooks).Methods("GET")
-	router.HandleFunc("/book/{bookId}", controllers.getBook).Methods("GET")
-	router.HandleFunc("/book", controllers.createBook).Methods("POST")
-	router.HandleFunc("/book", controllers.updateBook).Methods("PUT")
-	router.HandleFunc("/book/{bookId}", controllers.deleteBook).Methods("DELETE")
+var BookStaoreRoutes = func(router *mux.Router) {
+	router.HandleFunc("/book", controller.CreateBook).Methods(("GET"))
+	router.HandleFunc("/book/{bookId}", controller.GetBook).Methods("GET")
+	router.HandleFunc("/book", controller.CreateBook).Methods("POST")
+	router.HandleFunc("/book", controller.UpdateBook).Methods("PUT")
+	router.HandleFunc("/book/{bookId}", controller.DeleteBook).Methods("DELETE")
 }

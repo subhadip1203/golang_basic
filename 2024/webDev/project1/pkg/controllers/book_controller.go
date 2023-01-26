@@ -5,22 +5,22 @@ import (
 	"net/http"
 )
 
-func getAllBooks(res http.ResponseWriter, req *http.Request) {
+func GetAllBooks(res http.ResponseWriter, req *http.Request) {
 	fmt.Fprint(res, "{status:1}")
 }
 
-func getBook(res http.ResponseWriter, req *http.Request) {
+func GetBook(res http.ResponseWriter, req *http.Request) {
 	fmt.Fprint(res, "{status:1}")
 }
 
-func createBook(res http.ResponseWriter, req *http.Request) {
+func CreateBook(res http.ResponseWriter, req *http.Request) {
 	fmt.Fprint(res, "{status:1}")
 }
 
-func updateBook(res http.ResponseWriter, req *http.Request) {
+func UpdateBook(res http.ResponseWriter, req *http.Request) {
 	fmt.Fprint(res, "{status:1}")
 }
 
-func deleteBook(res http.ResponseWriter, req *http.Request) {
+func DeleteBook(res http.ResponseWriter, req *http.Request) {
 	fmt.Fprint(res, "{status:1}")
 }
