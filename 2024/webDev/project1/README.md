@@ -8,6 +8,6 @@
 
 for SQL ORM : `go get -u gorm.io/gorm`
 
-for mySQL : `go get -u gorm.io/driver/mysql`
+for mySQL : `go get -u gorm.io/driver/postgres`
 
 routing : `go get -u github.com/gorilla/mux`

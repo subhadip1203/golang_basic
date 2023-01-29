@@ -11,8 +11,8 @@ import (
 
 func main() {
 	r := mux.NewRouter()
-	route.BookStaoreRoutes(r)
 	r.HandleFunc("/", ping)
+	route.BookStaoreRoutes(r)
 	fmt.Println("starting server at http://localhost:8000")
 	if err := http.ListenAndServe(":8000", r); err != nil {
 		log.Fatal(err)
