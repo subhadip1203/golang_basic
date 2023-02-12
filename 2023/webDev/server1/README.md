@@ -1,5 +1,7 @@
-### setup project
+### run the server
 
-`go mod init Project_Name`
+`go run main.go`
 
-`go mod tidy`
+### check these routes
+http://localhost:8000/
+http://localhost:8000/form.html

@@ -14,9 +14,9 @@ type Book struct {
 	Publication string ` json:"publication" `
 }
 
-func init() {
+func Init() {
 	db = config.GetDB()
-	db.AutoMigrate(&Book{})
+	db.AutoMigrate((&Book{}))
 }
 
 func (b *Book) CreateBook() *Book {

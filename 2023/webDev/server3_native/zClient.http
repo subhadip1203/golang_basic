@@ -1,0 +1,14 @@
+### --- Base URL ---
+GET http://localhost:8000/
+
+
+### --- Base URL ---
+POST http://localhost:8000
+
+
+### --- Base URL ---
+PUT http://localhost:8000
+
+
+### --- About URL ---
+GET http://localhost:8000/about/
