@@ -13,7 +13,7 @@ import (
 
 func main() {
 	config.ConnectDB()
-	model.Init()
+	model.ModelMigration()
 	r := mux.NewRouter()
 	r.HandleFunc("/", ping)   // just a ping URL
 	route.BookStaoreRoutes(r) // these routes are handled by routes folder (package)

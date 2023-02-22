@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 
@@ -9,19 +10,16 @@ import (
 
 func GetAllBooks(res http.ResponseWriter, req *http.Request) {
 	books := model.GetAllBooks()
-	fmt.Println((books))
-	fmt.Fprint(res, "{status:1, message: 'get a book'}")
-	// jsonBooks, err := json.Marshal(books)
-	// if err != nil {
-	// 	res.WriteHeader(http.StatusBadRequest)
-	// 	res.Write([]byte("{status:0}"))
-	// 	return
-	// }
-
-	// res.Header().Set("content-type", "appilaction/json")
-	// res.WriteHeader(http.StatusOK)
-	// res.Write(jsonBooks)
-
+	jsonBooks, err := json.Marshal(books)
+	if err != nil {
+		res.WriteHeader(http.StatusBadRequest)
+		res.Write([]byte("{status:0}"))
+		return
+	} else {
+		res.Header().Set("content-type", "appilaction/json")
+		res.WriteHeader(http.StatusOK)
+		res.Write(jsonBooks)
+	}
 }
 
 func GetBook(res http.ResponseWriter, req *http.Request) {

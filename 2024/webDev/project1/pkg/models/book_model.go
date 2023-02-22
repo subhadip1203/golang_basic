@@ -1,7 +1,6 @@
 package model
 
 import (
-	"github.com/subhadip1203/golang_basic/2024/webDev/project1/pkg/config"
 	"gorm.io/gorm"
 )
 
@@ -12,11 +11,6 @@ type Book struct {
 	Name        string ` json:"name" `
 	Author      string ` json:"author" `
 	Publication string ` json:"publication" `
-}
-
-func Init() {
-	db = config.GetDB()
-	db.AutoMigrate((&Book{}))
 }
 
 func (b *Book) CreateBook() *Book {
