@@ -6,7 +6,7 @@ import (
 )
 
 var BookStaoreRoutes = func(router *mux.Router) {
-	router.HandleFunc("/book", controller.CreateBook).Methods(("GET"))
+	router.HandleFunc("/book", controller.GetAllBooks).Methods(("GET"))
 	router.HandleFunc("/book/{bookId}", controller.GetBook).Methods("GET")
 	router.HandleFunc("/book", controller.CreateBook).Methods("POST")
 	router.HandleFunc("/book", controller.UpdateBook).Methods("PUT")

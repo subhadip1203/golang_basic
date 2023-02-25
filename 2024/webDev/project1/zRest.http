@@ -18,4 +18,10 @@ GET http://localhost:8000/book/1
 ### Create book
 POST http://localhost:8000/book
 
+{
+    "Name"   : "book 1",
+	"Author" : "author one",
+	"Publication" : "publication one"
+}
+
 
