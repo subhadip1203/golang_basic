@@ -96,10 +96,39 @@ func CreateBook(res http.ResponseWriter, req *http.Request) {
 	res.Write(jsonBook)
 }
 
-func UpdateBook(res http.ResponseWriter, req *http.Request) {
-	fmt.Fprint(res, "{status:1, message: 'Update book' }")
+func DeleteBook(res http.ResponseWriter, req *http.Request) {
+	params := mux.Vars(req)
+	bookId := params["bookId"]
+
+	// paring param bookid to int
+	id, err := strconv.ParseInt(bookId, 0, 0)
+	if err != nil {
+		res.WriteHeader(http.StatusBadRequest)
+		res.Write([]byte("{status:0}"))
+		return
+	}
+
+	deletedBook, err := model.DeleteBook(id)
+	if err != nil {
+		res.WriteHeader(http.StatusBadRequest)
+		res.Write([]byte(err.Error()))
+		return
+	}
+	// Handling JSON conversionn and error
+	jsonBook, err := json.Marshal(deletedBook)
+	if err != nil {
+		res.WriteHeader(http.StatusBadRequest)
+		res.Write([]byte("{status:0}"))
+		return
+	}
+
+	// if all error free , sending respoands
+	res.Header().Set("content-type", "appilaction/json")
+	res.WriteHeader(http.StatusOK)
+	res.Write(jsonBook)
+
 }
 
-func DeleteBook(res http.ResponseWriter, req *http.Request) {
+func UpdateBook(res http.ResponseWriter, req *http.Request) {
 	fmt.Fprint(res, "{status:1, message: 'Delete book'}")
 }

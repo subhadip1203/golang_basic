@@ -9,7 +9,7 @@ import (
 var db *gorm.DB
 
 type Book struct {
-	gorm.Model  `json:"-"`
+	gorm.Model
 	Name        string ` json:"name" `
 	Author      string ` json:"author" `
 	Publication string ` json:"publication" `
@@ -47,8 +47,11 @@ func GetBookByID(id int64) (*Book, error) {
 	return &GetBook, nil
 }
 
-func DeleteBook(id int64) *Book {
+func DeleteBook(id int64) (*Book, error) {
 	var DeletedBook Book
-	db.Delete(&DeletedBook, 10)
-	return &DeletedBook
+	result := db.Delete(&DeletedBook, id)
+	if result.Error != nil {
+		return nil, errors.New("Book not Deleted")
+	}
+	return &DeletedBook, nil
 }

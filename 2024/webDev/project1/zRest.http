@@ -19,9 +19,10 @@ GET http://localhost:8000/book/1
 POST http://localhost:8000/book
 
 {
-    "Name"   : "book 1",
-	"Author" : "author one",
-	"Publication" : "publication one"
+    "Name"   : "book 3",
+	"Author" : "author three",
+	"Publication" : "publication three"
 }
 
-
+### Delete a perticular book
+DELETE  http://localhost:8000/book/9
